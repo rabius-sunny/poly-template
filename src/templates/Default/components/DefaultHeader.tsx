@@ -1,6 +1,7 @@
 'use client'
 
 import { Menu, Search, ShoppingCart, User } from 'lucide-react'
+import Link from 'next/link'
 import { useState } from 'react'
 import { Button } from '~/components/ui/button'
 import { Input } from '~/components/ui/input'
@@ -21,12 +22,18 @@ export default function DefaultHeader({}: TProps) {
 
           {/* Navigation - Desktop */}
           <nav className='hidden md:flex space-x-8'>
-            <a href='#' className='text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium'>
+            <Link
+              href='/'
+              className='text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium'
+            >
               Home
-            </a>
-            <a href='#' className='text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium'>
+            </Link>
+            <Link
+              href='/products'
+              className='text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium'
+            >
               Products
-            </a>
+            </Link>
             <a href='#' className='text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium'>
               Categories
             </a>
@@ -84,18 +91,18 @@ export default function DefaultHeader({}: TProps) {
                 <Input type='text' placeholder='Search products...' />
               </div>
 
-              <a
-                href='#'
+              <Link
+                href='/'
                 className='block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50'
               >
                 Home
-              </a>
-              <a
-                href='#'
+              </Link>
+              <Link
+                href='/products'
                 className='block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50'
               >
                 Products
-              </a>
+              </Link>
               <a
                 href='#'
                 className='block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50'

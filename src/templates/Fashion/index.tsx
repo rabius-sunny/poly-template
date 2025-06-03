@@ -1,6 +1,7 @@
 import FashionFooter from './components/FashionFooter'
 import FashionHeader from './components/FashionHeader'
 import FashionBanner from './pages/home/FashionBanner'
+import FashionProductsPage from './pages/products/FashionProductsPage'
 
 const fashionTemplate: TTemplateConfig = {
   name: 'FASHION',
@@ -28,15 +29,10 @@ const fashionTemplate: TTemplateConfig = {
       {
         order: 1,
         title: 'Fashion Products',
-        layout: 'CONTAINER',
-        component: FashionBanner, // Using banner as placeholder
+        layout: 'FLUID',
+        component: FashionProductsPage,
         visible: true,
-        props: {
-          title: 'Fashion Collection',
-          description: 'Browse our curated fashion pieces',
-          buttonText: 'View All Fashion',
-          buttonLink: '/products'
-        }
+        props: {}
       }
     ]
   },

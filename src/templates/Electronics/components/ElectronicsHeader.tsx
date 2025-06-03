@@ -1,6 +1,7 @@
 'use client'
 
 import { Menu, Search, ShoppingCart, User, Zap } from 'lucide-react'
+import Link from 'next/link'
 import { useState } from 'react'
 import { Button } from '~/components/ui/button'
 import { Input } from '~/components/ui/input'
@@ -22,19 +23,34 @@ export default function ElectronicsHeader({}: TProps) {
 
           {/* Navigation - Desktop */}
           <nav className='hidden md:flex space-x-6'>
-            <a href='#' className='text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors'>
+            <Link
+              href='/'
+              className='text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors'
+            >
               Home
-            </a>
-            <a href='#' className='text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors'>
+            </Link>
+            <Link
+              href='/products'
+              className='text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors'
+            >
               Products
-            </a>
-            <a href='#' className='text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors'>
+            </Link>
+            <a
+              href='#'
+              className='text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors'
+            >
               Categories
             </a>
-            <a href='#' className='text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors'>
+            <a
+              href='#'
+              className='text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors'
+            >
               Support
             </a>
-            <a href='#' className='text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors'>
+            <a
+              href='#'
+              className='text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors'
+            >
               Contact
             </a>
           </nav>
@@ -42,12 +58,16 @@ export default function ElectronicsHeader({}: TProps) {
           {/* Search Bar */}
           <div className='hidden md:flex flex-1 max-w-sm mx-8'>
             <div className='relative w-full'>
-              <Input 
-                type='text' 
-                placeholder='Search electronics...' 
-                className='bg-gray-800 border-gray-700 text-white placeholder:text-gray-400 pr-10' 
+              <Input
+                type='text'
+                placeholder='Search electronics...'
+                className='bg-gray-800 border-gray-700 text-white placeholder:text-gray-400 pr-10'
               />
-              <Button variant='ghost' size='icon' className='absolute right-0 top-0 h-full px-3 text-gray-400 hover:text-white'>
+              <Button
+                variant='ghost'
+                size='icon'
+                className='absolute right-0 top-0 h-full px-3 text-gray-400 hover:text-white'
+              >
                 <Search className='w-4 h-4' />
               </Button>
             </div>
@@ -86,26 +106,41 @@ export default function ElectronicsHeader({}: TProps) {
             <div className='px-2 pt-2 pb-3 space-y-1'>
               {/* Mobile Search */}
               <div className='px-3 py-2'>
-                <Input 
-                  type='text' 
-                  placeholder='Search electronics...' 
+                <Input
+                  type='text'
+                  placeholder='Search electronics...'
                   className='bg-gray-800 border-gray-700 text-white placeholder:text-gray-400'
                 />
               </div>
 
-              <a href='#' className='block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md'>
+              <Link
+                href='/'
+                className='block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md'
+              >
                 Home
-              </a>
-              <a href='#' className='block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md'>
+              </Link>
+              <Link
+                href='/products'
+                className='block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md'
+              >
                 Products
-              </a>
-              <a href='#' className='block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md'>
+              </Link>
+              <a
+                href='#'
+                className='block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md'
+              >
                 Categories
               </a>
-              <a href='#' className='block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md'>
+              <a
+                href='#'
+                className='block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md'
+              >
                 Support
               </a>
-              <a href='#' className='block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md'>
+              <a
+                href='#'
+                className='block px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 rounded-md'
+              >
                 Contact
               </a>
             </div>

@@ -29,15 +29,10 @@ const defaultTemplate: TTemplateConfig = {
       {
         order: 1,
         title: 'Products',
-        layout: 'CONTAINER',
+        layout: 'FLUID',
         component: DefaultProductsPage,
         visible: true,
-        props: {
-          title: 'Our Products',
-          description: 'Explore our wide range of products',
-          buttonText: 'View All',
-          buttonLink: '/products'
-        }
+        props: {}
       }
     ]
   },

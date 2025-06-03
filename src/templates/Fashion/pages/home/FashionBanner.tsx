@@ -1,4 +1,5 @@
 import { Heart, Sparkles, Star } from 'lucide-react'
+import Link from 'next/link'
 import { Button } from '~/components/ui/button'
 
 type TProps = {}
@@ -69,12 +70,14 @@ export default async function FashionBanner({}: TProps) {
 
             {/* CTA Buttons */}
             <div className='flex flex-col sm:flex-row gap-4'>
-              <Button
-                size='lg'
-                className='px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold text-lg rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl'
-              >
-                Shop Collection
-              </Button>
+              <Link href='/products'>
+                <Button
+                  size='lg'
+                  className='px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold text-lg rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl'
+                >
+                  Shop Collection
+                </Button>
+              </Link>
               <Button
                 variant='outline'
                 size='lg'

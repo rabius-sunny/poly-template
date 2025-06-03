@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 type TProps = {}
 
 export default async function DefaultBanner({}: TProps) {
@@ -37,9 +39,11 @@ export default async function DefaultBanner({}: TProps) {
 
             {/* CTA Buttons */}
             <div className='flex flex-col sm:flex-row gap-4'>
-              <button className='px-8 py-4 bg-yellow-400 hover:bg-yellow-300 text-black font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl'>
-                Shop Now
-              </button>
+              <Link href='/products'>
+                <button className='px-8 py-4 bg-yellow-400 hover:bg-yellow-300 text-black font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl'>
+                  Shop Now
+                </button>
+              </Link>
               <button className='px-8 py-4 border-2 border-white hover:bg-white hover:text-purple-600 font-semibold rounded-lg transition-all duration-300'>
                 View Collection
               </button>

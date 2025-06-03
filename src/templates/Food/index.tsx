@@ -1,6 +1,7 @@
 import FoodFooter from './components/FoodFooter'
 import FoodHeader from './components/FoodHeader'
 import FoodBanner from './pages/home/FoodBanner'
+import FoodProductsPage from './pages/products/FoodProductsPage'
 
 const foodTemplate: TTemplateConfig = {
   name: 'FOOD',
@@ -29,16 +30,10 @@ const foodTemplate: TTemplateConfig = {
       {
         order: 1,
         title: 'Menu',
-        layout: 'CONTAINER',
-        component: FoodBanner,
+        layout: 'FLUID',
+        component: FoodProductsPage,
         visible: true,
-        variant: 'GRID',
-        props: {
-          title: 'Our Delicious Menu',
-          subtitle: 'Explore our wide variety of mouth-watering dishes made with fresh ingredients',
-          buttonText: 'View All Items',
-          buttonLink: '#menu'
-        }
+        props: {}
       }
     ]
   },

@@ -1,6 +1,7 @@
 'use client'
 
 import { Heart, Menu, Search, ShoppingBag, User } from 'lucide-react'
+import Link from 'next/link'
 import { useState } from 'react'
 import { Button } from '~/components/ui/button'
 import { Input } from '~/components/ui/input'
@@ -26,18 +27,18 @@ export default function FashionHeader({}: TProps) {
 
           {/* Navigation - Desktop */}
           <nav className='hidden md:flex space-x-8'>
-            <a
-              href='#'
+            <Link
+              href='/'
               className='text-gray-700 hover:text-pink-500 px-3 py-2 text-sm font-medium transition-colors'
             >
               Home
-            </a>
-            <a
-              href='#'
+            </Link>
+            <Link
+              href='/products'
               className='text-gray-700 hover:text-pink-500 px-3 py-2 text-sm font-medium transition-colors'
             >
               Collection
-            </a>
+            </Link>
             <a
               href='#'
               className='text-gray-700 hover:text-pink-500 px-3 py-2 text-sm font-medium transition-colors'
@@ -138,18 +139,18 @@ export default function FashionHeader({}: TProps) {
                 />
               </div>
 
-              <a
-                href='#'
+              <Link
+                href='/'
                 className='block px-3 py-2 text-base font-medium text-gray-700 hover:text-pink-500 hover:bg-pink-50 rounded-md'
               >
                 Home
-              </a>
-              <a
-                href='#'
+              </Link>
+              <Link
+                href='/products'
                 className='block px-3 py-2 text-base font-medium text-gray-700 hover:text-pink-500 hover:bg-pink-50 rounded-md'
               >
                 Collection
-              </a>
+              </Link>
               <a
                 href='#'
                 className='block px-3 py-2 text-base font-medium text-gray-700 hover:text-pink-500 hover:bg-pink-50 rounded-md'

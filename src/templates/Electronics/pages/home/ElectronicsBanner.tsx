@@ -1,4 +1,5 @@
 import { Battery, Cpu, Monitor, Smartphone, Zap } from 'lucide-react'
+import Link from 'next/link'
 import { Button } from '~/components/ui/button'
 
 type TProps = {}
@@ -67,12 +68,14 @@ export default async function ElectronicsBanner({}: TProps) {
 
             {/* CTA Buttons */}
             <div className='flex flex-col sm:flex-row gap-4'>
-              <Button
-                size='lg'
-                className='px-8 py-4 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold text-lg rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl'
-              >
-                Shop Electronics
-              </Button>
+              <Link href='/products'>
+                <Button
+                  size='lg'
+                  className='px-8 py-4 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold text-lg rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl'
+                >
+                  Shop Electronics
+                </Button>
+              </Link>
               <Button
                 variant='outline'
                 size='lg'

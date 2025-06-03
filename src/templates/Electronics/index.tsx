@@ -1,6 +1,7 @@
 import ElectronicsFooter from './components/ElectronicsFooter'
 import ElectronicsHeader from './components/ElectronicsHeader'
 import ElectronicsBanner from './pages/home/ElectronicsBanner'
+import ElectronicsProductsPage from './pages/products/ElectronicsProductsPage'
 
 const electronicsTemplate: TTemplateConfig = {
   name: 'ELECTRONICS',
@@ -28,15 +29,10 @@ const electronicsTemplate: TTemplateConfig = {
       {
         order: 1,
         title: 'Electronics Products',
-        layout: 'CONTAINER',
-        component: ElectronicsBanner, // Using banner as placeholder, you can create a dedicated products component
+        layout: 'FLUID',
+        component: ElectronicsProductsPage,
         visible: true,
-        props: {
-          title: 'Electronics Collection',
-          description: 'Browse our premium electronics',
-          buttonText: 'View All Electronics',
-          buttonLink: '/products'
-        }
+        props: {}
       }
     ]
   },
