@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Nunito } from 'next/font/google'
 import { Toaster } from '~/components/ui/sonner'
+import TemplateSwitcher from '~/components/ui/templateSwitcher'
 import './globals.css'
 
 const nunito = Nunito({
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang='en'>
       <body suppressHydrationWarning className={` ${nunito.className} antialiased`}>
         {children}
+        <TemplateSwitcher />
         <Toaster richColors closeButton />
       </body>
     </html>
