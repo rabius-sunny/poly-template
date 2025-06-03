@@ -25,7 +25,7 @@ export default async function TemplateRenderer({ pathname }: TProps) {
     <>
       {sortedSections.map((section, index) => {
         const Component = section.component
-        const containerClass = section.layout === 'CONTAINER' ? 'container mx-auto px-4' : 'w-full'
+        const containerClass = section.layout === 'CONTAINER' ? 'box' : 'w-full'
 
         return (
           <section key={`${section.title}-${index}`} className={containerClass}>
