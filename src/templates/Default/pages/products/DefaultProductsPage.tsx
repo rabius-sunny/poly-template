@@ -1,5 +1,3 @@
-'use client'
-
 import { Filter, Grid, List, Star } from 'lucide-react'
 import Image from 'next/image'
 import { ecoFriendlyProducts, featuredProducts, premiumCollection } from '~/assets/defaultProducts'
@@ -8,7 +6,7 @@ import { Input } from '~/components/ui/input'
 
 type TProps = {}
 
-export default function DefaultProductsPage({}: TProps) {
+export default async function DefaultProductsPage({}: TProps) {
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
