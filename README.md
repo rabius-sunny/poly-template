@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Multi-Template Application
 
-## Getting Started
+A sophisticated Next.js application featuring a dynamic template switching system that allows users to experience different UI themes and layouts in real-time. Each template has complete control over its layout composition, making it highly flexible and maintainable.
 
-First, run the development server:
+## 🚀 Quick Start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+# Install dependencies
+bun install
+
+# Start development server
 bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **4 Unique Templates**: Default, Electronics, Fashion, and Food themes
+- **Real-time Template Switching**: Switch themes instantly via UI or URL
+- **Cookie-based Persistence**: Your template choice is remembered
+- **Server-side Rendering**: Optimal performance with SSR
+- **Independent Layouts**: Each template controls its own Header/Footer arrangement
+- **TypeScript**: Full type safety throughout the application
 
-## Learn More
+## 🎨 Available Templates
 
-To learn more about Next.js, take a look at the following resources:
+- **Default**: Clean minimal design (gray theme)
+- **Electronics**: Tech-focused with floating support button (blue theme)
+- **Fashion**: Elegant with newsletter signup section (pink theme)
+- **Food**: Warm design with promotional banner (orange theme)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔧 Development Commands
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+bun dev          # Start development server
+bun build        # Build for production
+bun start        # Start production server
+bun run lint     # Run ESLint
+bun run check    # Run TypeScript type checking
+```
 
-## Deploy on Vercel
+## 🏗️ Architecture Overview
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Core Concept
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Each template has its own `layout.tsx` file that independently chooses which layout components (Header, Footer, etc.) to use and how to arrange them, rather than using a centralized layout wrapper.
+
+### Key Components
+
+- **TemplateLayout**: Dynamically imports and renders each template's layout
+- **TemplateRenderer**: Handles page-specific component rendering
+- **Template Registry**: Centralized template management system
+- **Middleware**: Cookie-based template switching and persistence
+
+### Template Structure
+
+```
+src/templates/[TemplateName]/
+├── index.tsx           # Template configuration
+├── layout.tsx          # Independent layout with Header/Footer
+├── components/         # Template-specific components
+└── pages/             # Template-specific page components
+```
+
+## 🔄 Template Switching
+
+Switch templates in multiple ways:
+
+- **UI Component**: Use the template switcher in the header
+- **URL Parameter**: Add `?template=TEMPLATE_NAME` to any URL
+- **API**: POST to `/api/get-current-template` with template name
+
+## 📖 Detailed Documentation
+
+For comprehensive documentation, architecture details, and development guide, see [TEMPLATE_SYSTEM_README.md](./TEMPLATE_SYSTEM_README.md).
+
+## 🚀 Deploy on Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/poly-templates)
+
+**Built with ❤️ using Next.js 15, TypeScript, and Tailwind CSS**
