@@ -99,7 +99,7 @@ Unlike traditional theme systems that use centralized layout wrappers, this syst
 Each template has its own curated product collection stored in `src/assets/templateProducts.ts`:
 
 - **Electronics Products**: 8 tech items with detailed specifications, prices, and categories
-- **Fashion Products**: 8 fashion items with size/color variants and style categories  
+- **Fashion Products**: 8 fashion items with size/color variants and style categories
 - **Food Products**: 8 menu items with ingredients, dietary info, and chef descriptions
 - **Default Products**: 8 lifestyle items for general-purpose use
 
@@ -121,11 +121,11 @@ type Product = {
   image: string
   category: string
   // Template-specific fields
-  specs?: string[]        // Electronics
-  sizes?: string[]        // Fashion
-  colors?: string[]       // Fashion
-  ingredients?: string[]  // Food
-  dietary?: string[]      // Food
+  specs?: string[] // Electronics
+  sizes?: string[] // Fashion
+  colors?: string[] // Fashion
+  ingredients?: string[] // Food
+  dietary?: string[] // Food
 }
 ```
 
@@ -214,11 +214,11 @@ The system uses production-optimized cookie settings:
 
 ```typescript
 response.cookies.set('current-template', templateParam, {
-  httpOnly: false,           // Allow client-side access for template switcher
-  secure: process.env.NODE_ENV === 'production',  // HTTPS only in production
-  sameSite: 'lax',          // CSRF protection while allowing navigation
-  maxAge: 60 * 60 * 24 * 365,  // 1 year expiration
-  path: '/'                 // Available across entire site
+  httpOnly: false, // Allow client-side access for template switcher
+  secure: process.env.NODE_ENV === 'production', // HTTPS only in production
+  sameSite: 'lax', // CSRF protection while allowing navigation
+  maxAge: 60 * 60 * 24 * 365, // 1 year expiration
+  path: '/' // Available across entire site
 })
 ```
 
@@ -245,16 +245,19 @@ For reliable deployment on platforms like Netlify and Vercel, the system uses:
 Each template includes comprehensive navigation with Next.js Link components:
 
 **Header Navigation Features:**
+
 - **Home Link**: Logo/brand name links to homepage
 - **Products Link**: Direct access to template-specific product catalog
 - **Template Switcher**: Dropdown for changing templates
 - **Mobile Responsive**: Hamburger menu for mobile devices
 
 **Hero Section Integration:**
+
 - **Call-to-Action Buttons**: Hero banners include "Shop Now" buttons linking to products
 - **Seamless Transitions**: All navigation uses Next.js Link for optimal performance
 
 **Implementation Example:**
+
 ```typescript
 // Template Header Component
 <nav className="flex items-center space-x-8">
@@ -273,6 +276,7 @@ Each template includes comprehensive navigation with Next.js Link components:
 ```
 
 ## 📝 Creating a New Template
+
 2. **Cookie Validation**: Verifies template exists in registry
 3. **Server Resolution**: `serverTemplateUtils` resolves current template server-side
 4. **Dynamic Rendering**: `TemplateLayout` dynamically imports appropriate layout
@@ -789,18 +793,21 @@ http://localhost:3000/?template=FOOD
 ## 🔄 Recent Updates (June 2025)
 
 ### Products Pages System
+
 - **Comprehensive Product Collections**: Each template now includes 8 curated products with template-specific attributes
 - **Next.js Image Optimization**: All product images converted to Next.js Image components for performance
 - **Template-Specific Designs**: Products pages match each template's theme and branding
 - **Seamless Navigation**: Integrated navigation with Link components throughout all templates
 
 ### Production Deployment Optimizations
+
 - **Cookie Configuration**: Updated with production-ready settings (`sameSite: 'lax'`, proper `secure` flags)
 - **Template Switching Strategy**: Implemented URL parameter approach for reliable deployment on Netlify/Vercel
 - **Session Persistence**: Template choices now persist for 1 year with optimized cookie settings
 - **Error Handling**: Graceful fallbacks and improved error boundaries for production environments
 
 ### Navigation Enhancements
+
 - **Template Headers**: All templates include proper Link components for Home and Products navigation
 - **Hero Section CTAs**: Banner components include "Shop Now" buttons linking to products pages
 - **Mobile Responsive**: Consistent mobile navigation across all templates

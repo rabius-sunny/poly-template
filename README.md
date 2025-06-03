@@ -81,6 +81,7 @@ Switch templates in multiple ways:
 ### Production Deployment Notes
 
 The template switching system has been optimized for production deployment with:
+
 - **Cookie Configuration**: Production-friendly settings with proper `sameSite` and `secure` flags
 - **URL Parameter Switching**: Reliable template switching using URL parameters for deployment environments
 - **Session Persistence**: Template choices persist across browser sessions with 1-year cookie expiration
