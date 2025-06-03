@@ -12,6 +12,10 @@ export async function middleware(request: NextRequest) {
   if (templateParam && isValidTemplate(templateParam)) {
     // Set new template in cookie with production-friendly settings
     response.cookies.set('current-template', templateParam, {
+      httpOnly: false,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 365, // 1 year
       path: '/'
     })
 

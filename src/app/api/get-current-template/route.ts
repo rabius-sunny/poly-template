@@ -1,24 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { templateRegistry } from '~/lib/templateRegistry'
 
-type TTemplate =
-  | 'DEFAULT'
-  | 'FASHION'
-  | 'ELECTRONICS'
-  | 'FOOD'
-  | 'PHARMACEUTICALS'
-  | 'BEAUTY'
-  | 'CLOTHING'
-  | 'FLOWER_SHOP'
-  | 'FRUIT'
-  | 'GROCERY'
-  | 'HARDWARE'
-  | 'HOME'
-  | 'JEWELRY'
-  | 'PET'
-  | 'SPORTS'
-  | 'TOYS'
-
 export async function GET(request: NextRequest) {
   try {
     // Get template from cookie
@@ -56,6 +38,10 @@ export async function POST(request: NextRequest) {
 
     // Set template in cookie with production-friendly settings
     response.cookies.set('current-template', template, {
+      httpOnly: false,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 365, // 1 year
       path: '/'
     })
 

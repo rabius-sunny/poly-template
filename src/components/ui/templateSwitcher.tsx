@@ -82,8 +82,8 @@ export default function TemplateSwitcher({}: TProps) {
       setCurrentTemplate(templateName)
       toast.success(`Switched to ${templateName.toLowerCase().replace('_', ' ')} template`)
 
-      // Reload the page to apply the new template
-      window.location.reload()
+      // Use URL parameter approach as fallback for reliable switching
+      window.location.href = `${window.location.pathname}?template=${templateName}`
     } catch {
       toast.error('Failed to switch template')
     } finally {
