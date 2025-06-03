@@ -54,12 +54,9 @@ export async function POST(request: NextRequest) {
 
     const response = NextResponse.json({ success: true })
 
-    // Set template in cookie
+    // Set template in cookie with production-friendly settings
     response.cookies.set('current-template', template, {
-      httpOnly: false,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      maxAge: 60 * 60 * 24 * 365 // 1 year
+      path: '/'
     })
 
     return response

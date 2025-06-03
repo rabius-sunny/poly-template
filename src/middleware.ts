@@ -10,12 +10,9 @@ export async function middleware(request: NextRequest) {
   const templateParam = request.nextUrl.searchParams.get('template') as TTemplate
 
   if (templateParam && isValidTemplate(templateParam)) {
-    // Set new template in cookie
+    // Set new template in cookie with production-friendly settings
     response.cookies.set('current-template', templateParam, {
-      httpOnly: false,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      maxAge: 60 * 60 * 24 * 365 // 1 year
+      path: '/'
     })
 
     // Redirect to remove template param from URL
