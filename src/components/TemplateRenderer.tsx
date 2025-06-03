@@ -11,8 +11,7 @@ export default async function TemplateRenderer({ pathname }: TProps) {
     return <div>Template not found</div>
   }
 
-  const { layout: Layout, pages } = templateConfig
-  const { Header, Footer } = Layout
+  const { pages } = templateConfig
 
   // Get page configuration for current pathname
   const pageConfig = pages[pathname] || []
@@ -23,32 +22,26 @@ export default async function TemplateRenderer({ pathname }: TProps) {
     .sort((a, b) => a.order - b.order)
 
   return (
-    <div className='min-h-screen flex flex-col'>
-      <Header />
+    <>
+      {sortedSections.map((section, index) => {
+        const Component = section.component
+        const containerClass = section.layout === 'CONTAINER' ? 'container mx-auto px-4' : 'w-full'
 
-      <main className='flex-1'>
-        {sortedSections.map((section, index) => {
-          const Component = section.component
-          const containerClass = section.layout === 'CONTAINER' ? 'box' : 'w-full'
+        return (
+          <section key={`${section.title}-${index}`} className={containerClass}>
+            <Component {...(section.props || {})} />
+          </section>
+        )
+      })}
 
-          return (
-            <section key={`${section.title}-${index}`} className={containerClass}>
-              <Component {...(section.props || {})} />
-            </section>
-          )
-        })}
-
-        {sortedSections.length === 0 && (
-          <div className='box py-16 text-center'>
-            <h1 className='text-4xl font-bold text-gray-900 mb-4'>
-              Welcome to {templateConfig.name} Template
-            </h1>
-            <p className='text-gray-600'>No sections configured for this page ({pathname})</p>
-          </div>
-        )}
-      </main>
-
-      <Footer />
-    </div>
+      {sortedSections.length === 0 && (
+        <div className='container mx-auto px-4 py-16 text-center'>
+          <h1 className='text-4xl font-bold text-gray-900 mb-4'>
+            Welcome to {templateConfig.name} Template
+          </h1>
+          <p className='text-gray-600'>No sections configured for this page ({pathname})</p>
+        </div>
+      )}
+    </>
   )
 }

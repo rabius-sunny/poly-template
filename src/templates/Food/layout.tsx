@@ -10,6 +10,11 @@ const FoodLayout: React.FC<FoodLayoutProps> = ({ children, template }) => {
 
   return (
     <div className='min-h-screen flex flex-col bg-orange-50'>
+      {/* Promotional top banner - only in Food template */}
+      <div className='bg-red-600 text-white py-2 text-center text-sm font-semibold'>
+        🔥 LIMITED TIME: Free delivery on orders over $25! Use code: FREEDEL25 🚚
+      </div>
+
       <Header />
       <main className='flex-1'>{children}</main>
       <Footer />
