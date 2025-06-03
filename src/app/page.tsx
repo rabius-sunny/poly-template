@@ -1,5 +1,7 @@
+import TemplateRenderer from '~/components/TemplateRenderer'
+
 type TProps = {}
 
-export default function Page({}: TProps) {
-  return <div>main</div>
+export default async function Page({}: TProps) {
+  return <TemplateRenderer pathname='/' />
 }
