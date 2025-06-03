@@ -5,9 +5,12 @@ A Next.js 15 application featuring a sophisticated dynamic template switching sy
 ## 🚀 Key Features
 
 - **Independent Template Layouts**: Each template controls its own Header/Footer arrangement
-- **Real-time Template Switching**: Instant theme changes via UI or URL parameters
+- **Comprehensive Products Pages**: Template-specific product catalogs with real data and images
+- **Real-time Template Switching**: Instant theme changes via UI or URL parameters (production-ready)
 - **Server-Side Rendering**: Full SSR support with async components
-- **Cookie-Based Persistence**: Template selection survives page reloads and sessions
+- **Cookie-Based Persistence**: Template selection survives page reloads and sessions (1-year expiration)
+- **Next.js Image Optimization**: All images converted to Next.js Image components for performance
+- **Production Deployment Ready**: Optimized cookie settings and URL parameter switching for Netlify/Vercel
 - **Type-Safe Architecture**: Comprehensive TypeScript coverage
 - **Modular Design**: Easy template addition with consistent patterns
 - **Responsive Design**: All templates are mobile-first and fully responsive
@@ -48,7 +51,10 @@ Unlike traditional theme systems that use centralized layout wrappers, this syst
    - Handles template validation and fallbacks
 
 5. **Middleware** (`src/middleware.ts`)
-   - Intercepts requests for template switching
+   - Intercepts requests for template switching via URL parameters
+   - Sets production-ready cookies with proper security settings
+   - Handles template validation and URL cleanup
+   - Optimized for deployment environments (Netlify, Vercel)
    - Manages cookie-based persistence
    - Handles URL parameter processing
 
@@ -58,29 +64,70 @@ Unlike traditional theme systems that use centralized layout wrappers, this syst
 
 - **Theme**: Clean, professional gray palette
 - **Layout**: Standard Header → Main → Footer structure
+- **Products**: Lifestyle items including home decor, tech accessories, fitness gear
 - **Use Case**: General-purpose, corporate websites
-- **Special Features**: Minimalist design philosophy
+- **Special Features**: Minimalist design philosophy, comprehensive product filtering
 
 ### 2. Electronics Template
 
 - **Theme**: Tech-focused blue and electric colors
 - **Layout**: Header → Main → Floating Support Button → Footer
+- **Products**: Electronics catalog with detailed specs (iPhones, MacBooks, gaming devices)
 - **Use Case**: Electronics stores, tech companies
-- **Special Features**: Floating technical support button with ⚡ icon
+- **Special Features**: Floating technical support button, product specifications display
 
 ### 3. Fashion Template
 
 - **Theme**: Elegant pink and rose color scheme
 - **Layout**: Header → Main → Newsletter Section → Footer
+- **Products**: Fashion items with size/color options (dresses, handbags, shoes, jewelry)
 - **Use Case**: Fashion brands, lifestyle websites
-- **Special Features**: Newsletter signup section with gradient background above footer
+- **Special Features**: Newsletter signup section, size and color variant selection
 
 ### 4. Food Template
 
 - **Theme**: Warm orange and red appetizing colors
 - **Layout**: Promotional Banner → Header → Main → Footer
+- **Products**: Restaurant menu with ingredients (pizza, burgers, sushi, desserts)
 - **Use Case**: Restaurants, food delivery, culinary blogs
-- **Special Features**: Top promotional banner with delivery offers and food emojis
+- **Special Features**: Top promotional banner, ingredient listings, chef-crafted messaging
+
+## 🛍️ Products System
+
+### Template-Specific Product Collections
+
+Each template has its own curated product collection stored in `src/assets/templateProducts.ts`:
+
+- **Electronics Products**: 8 tech items with detailed specifications, prices, and categories
+- **Fashion Products**: 8 fashion items with size/color variants and style categories  
+- **Food Products**: 8 menu items with ingredients, dietary info, and chef descriptions
+- **Default Products**: 8 lifestyle items for general-purpose use
+
+### Products Page Features
+
+- **Template-Specific Design**: Each products page matches its template's theme and branding
+- **Next.js Image Optimization**: All product images use Next.js Image components for performance
+- **Responsive Grid Layout**: Mobile-first design with responsive product grids
+- **Template-Specific Attributes**: Electronics show specs, Fashion shows sizes/colors, Food shows ingredients
+- **Consistent Navigation**: All templates include proper Link components for seamless navigation
+
+### Product Data Structure
+
+```typescript
+type Product = {
+  id: number
+  name: string
+  price: number
+  image: string
+  category: string
+  // Template-specific fields
+  specs?: string[]        // Electronics
+  sizes?: string[]        // Fashion
+  colors?: string[]       // Fashion
+  ingredients?: string[]  // Food
+  dietary?: string[]      // Food
+}
+```
 
 ## 🔧 Technical Implementation Details
 
@@ -153,7 +200,79 @@ export default function TemplateLayout({
 
 ### Template Switching Flow
 
-1. **URL Parameter Detection**: Middleware checks for `?template=TEMPLATE_NAME`
+1. **User Interaction**: User selects template via UI switcher or URL parameter
+2. **Middleware Processing**: Middleware intercepts request and validates template
+3. **Cookie Update**: Sets secure, production-ready cookie with 1-year expiration
+4. **URL Cleanup**: Removes template parameter from URL via redirect
+5. **Component Re-render**: New template components load with updated configuration
+
+## 🚀 Production Deployment
+
+### Cookie Configuration for Production
+
+The system uses production-optimized cookie settings:
+
+```typescript
+response.cookies.set('current-template', templateParam, {
+  httpOnly: false,           // Allow client-side access for template switcher
+  secure: process.env.NODE_ENV === 'production',  // HTTPS only in production
+  sameSite: 'lax',          // CSRF protection while allowing navigation
+  maxAge: 60 * 60 * 24 * 365,  // 1 year expiration
+  path: '/'                 // Available across entire site
+})
+```
+
+### Template Switching Strategy
+
+For reliable deployment on platforms like Netlify and Vercel, the system uses:
+
+1. **URL Parameter Approach**: Primary method using `?template=TEMPLATE_NAME`
+2. **Cookie Persistence**: Template choice persists across sessions
+3. **Fallback Mechanism**: Template switcher uses `window.location.href` for reliability
+4. **Server-Side Validation**: Middleware validates templates on every request
+
+### Deployment Optimizations
+
+- **Next.js Image Components**: All product images use optimized Image components
+- **Static Generation**: Templates support static generation for better performance
+- **TypeScript Safety**: Full type checking prevents runtime template errors
+- **Error Boundaries**: Graceful fallback to default template on errors
+
+## 🧭 Navigation System
+
+### Template-Specific Navigation
+
+Each template includes comprehensive navigation with Next.js Link components:
+
+**Header Navigation Features:**
+- **Home Link**: Logo/brand name links to homepage
+- **Products Link**: Direct access to template-specific product catalog
+- **Template Switcher**: Dropdown for changing templates
+- **Mobile Responsive**: Hamburger menu for mobile devices
+
+**Hero Section Integration:**
+- **Call-to-Action Buttons**: Hero banners include "Shop Now" buttons linking to products
+- **Seamless Transitions**: All navigation uses Next.js Link for optimal performance
+
+**Implementation Example:**
+```typescript
+// Template Header Component
+<nav className="flex items-center space-x-8">
+  <Link href="/" className="hover:text-accent transition-colors">
+    Home
+  </Link>
+  <Link href="/products" className="hover:text-accent transition-colors">
+    Products
+  </Link>
+</nav>
+
+// Hero Section CTA
+<Link href="/products">
+  <Button>Shop Now</Button>
+</Link>
+```
+
+## 📝 Creating a New Template
 2. **Cookie Validation**: Verifies template exists in registry
 3. **Server Resolution**: `serverTemplateUtils` resolves current template server-side
 4. **Dynamic Rendering**: `TemplateLayout` dynamically imports appropriate layout
@@ -666,6 +785,26 @@ http://localhost:3000/?template=FOOD
 - [Bun](https://bun.sh/) - Fast JavaScript runtime & package manager
 
 **Template System Architecture**: Designed for maximum flexibility and maintainability in multi-theme applications.
+
+## 🔄 Recent Updates (June 2025)
+
+### Products Pages System
+- **Comprehensive Product Collections**: Each template now includes 8 curated products with template-specific attributes
+- **Next.js Image Optimization**: All product images converted to Next.js Image components for performance
+- **Template-Specific Designs**: Products pages match each template's theme and branding
+- **Seamless Navigation**: Integrated navigation with Link components throughout all templates
+
+### Production Deployment Optimizations
+- **Cookie Configuration**: Updated with production-ready settings (`sameSite: 'lax'`, proper `secure` flags)
+- **Template Switching Strategy**: Implemented URL parameter approach for reliable deployment on Netlify/Vercel
+- **Session Persistence**: Template choices now persist for 1 year with optimized cookie settings
+- **Error Handling**: Graceful fallbacks and improved error boundaries for production environments
+
+### Navigation Enhancements
+- **Template Headers**: All templates include proper Link components for Home and Products navigation
+- **Hero Section CTAs**: Banner components include "Shop Now" buttons linking to products pages
+- **Mobile Responsive**: Consistent mobile navigation across all templates
+- **Template Switcher**: Enhanced reliability with fallback mechanisms for deployment
 
 ---
 

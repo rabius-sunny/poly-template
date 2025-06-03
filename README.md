@@ -17,18 +17,21 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## ✨ Features
 
 - **4 Unique Templates**: Default, Electronics, Fashion, and Food themes
-- **Real-time Template Switching**: Switch themes instantly via UI or URL
-- **Cookie-based Persistence**: Your template choice is remembered
+- **Comprehensive Products Pages**: Each template has its own product catalog with real data
+- **Real-time Template Switching**: Switch themes instantly via UI or URL (production-ready)
+- **Cookie-based Persistence**: Your template choice is remembered across sessions
 - **Server-side Rendering**: Optimal performance with SSR
 - **Independent Layouts**: Each template controls its own Header/Footer arrangement
+- **Next.js Image Optimization**: All images use Next.js Image components for performance
 - **TypeScript**: Full type safety throughout the application
+- **Production Deployment Ready**: Optimized for Netlify and Vercel deployment
 
 ## 🎨 Available Templates
 
-- **Default**: Clean minimal design (gray theme)
-- **Electronics**: Tech-focused with floating support button (blue theme)
-- **Fashion**: Elegant with newsletter signup section (pink theme)
-- **Food**: Warm design with promotional banner (orange theme)
+- **Default**: Clean minimal design with lifestyle products (gray theme)
+- **Electronics**: Tech-focused with electronics catalog and specs display (blue theme)
+- **Fashion**: Elegant with fashion items, sizes, and colors (pink theme)
+- **Food**: Warm design with restaurant menu and ingredients (orange theme)
 
 ## 🔧 Development Commands
 
@@ -60,7 +63,11 @@ src/templates/[TemplateName]/
 ├── index.tsx           # Template configuration
 ├── layout.tsx          # Independent layout with Header/Footer
 ├── components/         # Template-specific components
+│   ├── Header.tsx      # Template-specific header with navigation
+│   └── Footer.tsx      # Template-specific footer
 └── pages/             # Template-specific page components
+    ├── home/          # Homepage components (Banner, etc.)
+    └── products/      # Template-specific products page
 ```
 
 ## 🔄 Template Switching
@@ -68,8 +75,15 @@ src/templates/[TemplateName]/
 Switch templates in multiple ways:
 
 - **UI Component**: Use the template switcher in the header
-- **URL Parameter**: Add `?template=TEMPLATE_NAME` to any URL
-- **API**: POST to `/api/get-current-template` with template name
+- **URL Parameter**: Add `?template=TEMPLATE_NAME` to any URL (production-ready)
+- **Direct Navigation**: Click "Products" to explore template-specific catalogs
+
+### Production Deployment Notes
+
+The template switching system has been optimized for production deployment with:
+- **Cookie Configuration**: Production-friendly settings with proper `sameSite` and `secure` flags
+- **URL Parameter Switching**: Reliable template switching using URL parameters for deployment environments
+- **Session Persistence**: Template choices persist across browser sessions with 1-year cookie expiration
 
 ## 📖 Detailed Documentation
 
