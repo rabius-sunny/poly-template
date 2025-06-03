@@ -1,0 +1,12 @@
+I want to create a multi template application. I created the basic structure on which upon the app stands. My architechture is:
+1. inside the `/src/templates` folder, I'll define various templates.
+2. inside every template, there will be `components` folder for template-specific components.
+3. there will `pages` folder where we'll define folders for every page of that template. and every folder contains some template-specific components for that individual page.
+4. finally we've an `index.tsx` file for organizing every elements of the template. This file contains:
+a. name: which is pre-defined with `TTemplate` type.
+b. layout: where we define sections that will be shown on every pages of that template. These sections are rendered and organized inside a file `layout.tsx` in every template.
+c. pages: where we define routes and their sections. like for `/` route of the current template will contain an array of sections. Sections are nothing but some properties and a component using those properties.
+d. we've config objects for additional properties.
+
+I've `index.d.ts` for basic type definition for you reference. I need to switch and store current template using middleware and cookies. I've a dummy `templateSwitcher` component for that. I can switch between templates.
+NB: all of my templates component will be async, server component cause I might fetch data on them. So the whole app will be server side rendered.
